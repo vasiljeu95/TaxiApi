@@ -1,4 +1,4 @@
-package com.github.vasiljeu95.taxiapi.dto;
+package com.github.vasiljeu95.taxiapi.dto.requestDto;
 
 import lombok.Data;
 

@@ -19,10 +19,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenProvider jwtTokenProvider;
-
     private static final String ADMIN_ENDPOINT = "/api/admin/**";
-    private static final String LOGIN_ENDPOINT = "/api/auth/**";
-//    private static final String REGISTRATION_ENDPOINT = "/api/auth/registration";
+    private static final String AUTH_ENDPOINT = "/api/auth/**";
+    private static final String USER_ENDPOINT = "/api/users/**";
+    private static final String DRIVER_ENDPOINT = "/api/drivers/**";
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -43,8 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(LOGIN_ENDPOINT).permitAll()
-//                .antMatchers(REGISTRATION_ENDPOINT).permitAll()
+                .antMatchers(AUTH_ENDPOINT).permitAll()
+                .antMatchers(USER_ENDPOINT).hasRole("USER")
+                .antMatchers(USER_ENDPOINT).hasRole("ADMIN")
+                .antMatchers(DRIVER_ENDPOINT).hasRole("DRIVER")
+                .antMatchers(DRIVER_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
