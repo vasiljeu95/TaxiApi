@@ -22,7 +22,7 @@ public class CarDto {
     private String carModel;
     private String carColor;
     private String carGovernmentNumber;
-    private String carType;
+//    private String carType;
 
     public static CarDto fromCar (Car car) {
         CarDto carTariffDto = new CarDto();
@@ -30,7 +30,7 @@ public class CarDto {
         carTariffDto.setCarModel(car.getCarModel());
         carTariffDto.setCarColor(car.getCarColor());
         carTariffDto.setCarGovernmentNumber(car.getCarGovernmentNumber());
-        carTariffDto.setCarType(car.getCarType().toString());
+//        carTariffDto.setCarType(car.getCarType().toString());
 
         return carTariffDto;
     }
@@ -41,7 +41,7 @@ public class CarDto {
         car.setCarModel(carModel);
         car.setCarColor(carColor);
         car.setCarGovernmentNumber(carGovernmentNumber);
-        car.setCarType(CarType.valueOf(carType));
+//        car.setCarType(CarType.valueOf(carType));
 
         return car;
     }

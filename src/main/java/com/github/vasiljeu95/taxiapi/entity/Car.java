@@ -23,9 +23,9 @@ public class Car extends BaseEntity {
     private String carColor;
     @Column(name = "car_government_number")
     private String carGovernmentNumber;
-    @Column(name = "car_type")
-    @Enumerated(EnumType.STRING)
-    private CarType carType;
+//    @Column(name = "car_type")
+//    @Enumerated(EnumType.STRING)
+//    private CarType carType;
 
 //    TODO - relationship with "users" table (where ROLE_DRIVER) and "cars" - in new table "driver_cars"
 //    @ManyToMany(mappedBy = "carList", fetch = FetchType.LAZY)

@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 07.07.2022
  */
 @Data
-public class CarTariffRequestDto {
+public class TripCostRequestDto {
     private String startCoordinate;
     private String finishCoordinate;
 }
