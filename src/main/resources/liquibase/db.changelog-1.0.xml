@@ -3,6 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+<!--    create table users -->
     <changeSet id="1.0.0" author="stepan.vasilyev">
         <createTable tableName="users">
             <column name="id" type="bigint" autoIncrement="true">
@@ -35,6 +36,7 @@
         </createTable>
     </changeSet>
 
+<!--    createTable roles-->
     <changeSet id="1.0.1" author="stepan.vasilyev">
         <createTable tableName="roles">
             <column name="id" type="BIGINT" autoIncrement="true">
@@ -55,6 +57,7 @@
         </createTable>
     </changeSet>
 
+<!--    createTable user_roles -->
     <changeSet id="1.0.2" author="stepan.vasilyev">
         <createTable tableName="user_roles">
             <column name="user_id" type="BIGINT"></column>
@@ -62,6 +65,7 @@
         </createTable>
     </changeSet>
 
+    <!--    insert roles in user_roles table-->
     <changeSet id="1.0.3" author="stepan.vasilyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="user_roles"
@@ -72,6 +76,7 @@
                                  referencedTableName="users"/>
     </changeSet>
 
+    <!--    insert roles in user_roles table-->
     <changeSet id="1.0.4" author="stepan.vasilyev">
         <addForeignKeyConstraint baseColumnNames="role_id"
                                  baseTableName="user_roles"
@@ -82,7 +87,7 @@
                                  referencedTableName="roles"/>
     </changeSet>
 
-<!--    insert roles, users and user_roles-->
+<!--    insert data in tables-->
     <changeSet id="1.0.5" author="stepan.vasilyev">
         <insert tableName="roles">
             <column name="name" value="ROLE_USER"/>
@@ -98,21 +103,49 @@
             <column name="email" value="DartStepius@gmail.com"/>
             <column name="first_name" value="Dart"/>
             <column name="last_name" value="Stepius"/>
-            <column name="password" value="dartTest"/>
+            <column name="password" value="$2a$04$ftK5Nw5pgFoIOY16eRbwl.TwBN7.Cd0WFQVt1WxkZSDJXZ/rVssau"/>
         </insert>
         <insert tableName="users">
             <column name="username" value="VladNordland"/>
             <column name="email" value="VladNordland@gmail.com"/>
             <column name="first_name" value="Vlad"/>
             <column name="last_name" value="Nordland"/>
-            <column name="password" value="vladTest"/>
+            <column name="password" value="$2a$04$aDNSY0xi/6zS83kXcNsErOzp8.pAY/HI1ZrjbdAYAxLdo/ofZKF6y"/>
         </insert>
         <insert tableName="users">
             <column name="username" value="SlavaYaskevich"/>
             <column name="email" value="SlavaYaskevich@gmail.com"/>
             <column name="first_name" value="Slava"/>
             <column name="last_name" value="Yaskevich"/>
-            <column name="password" value="slavaTest"/>
+            <column name="password" value="$2a$04$aWSSYncWML/ab8V/.FX.9OaBuEjSja0oWlK/n8j9gBgl97C0Tx9NW"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="AshotIbragimov"/>
+            <column name="email" value="AshotIbragimov@gmail.com"/>
+            <column name="first_name" value="Ashot"/>
+            <column name="last_name" value="Ibragimov"/>
+            <column name="password" value="$2a$04$T676julMEdZcnJ3OBcRmUuIAggeq56OY2oKb07dvCPEzVFGBJKdSm"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="SergeyBikov"/>
+            <column name="email" value="SergeyBikov@gmail.com"/>
+            <column name="first_name" value="Sergey"/>
+            <column name="last_name" value="Bikov"/>
+            <column name="password" value="$2a$04$RBuBvCO/.5Ejyxsc7f9MCuCjTsUUCaW3nxQtC3KhMTjZJQQPAZ.3m"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="IvanGydskii"/>
+            <column name="email" value="IvanGydskii@gmail.com"/>
+            <column name="first_name" value="Ivan"/>
+            <column name="last_name" value="Gydskii"/>
+            <column name="password" value="$2a$04$AbjI/f1Bdk0ENpuDBQbvPu./xDbWO8N10GZDzxH8F0sf6ewfQqvC2"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="PetrJackson"/>
+            <column name="email" value="PetrJackson@gmail.com"/>
+            <column name="first_name" value="Petr"/>
+            <column name="last_name" value="Jackson"/>
+            <column name="password" value="$2a$04$raZHM/z4ORe9a.xdwYkm6exK5W7KxYTyjlh9fdoFlNpGKvfbVN0uW"/>
         </insert>
         <insert tableName="user_roles">
             <column name="user_id" value="1"/>
@@ -134,8 +167,21 @@
             <column name="user_id" value="3"/>
             <column name="role_id" value="3"/>
         </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="4"/>
+            <column name="role_id" value="3"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="5"/>
+            <column name="role_id" value="3"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="6"/>
+            <column name="role_id" value="3"/>
+        </insert>
     </changeSet>
 
+<!--    create tables-->
     <changeSet id="1.0.6" author="stepan.vasilyev">
         <createTable tableName="orders">
             <column name="id" type="bigint" autoIncrement="true">
@@ -144,7 +190,7 @@
             <column name="car_id" type="BIGINT">
                 <constraints nullable="false" unique="true" />
             </column>
-            <column name="waiting_time" type="BIGINT">
+            <column name="time" type="BIGINT">
                 <constraints nullable="false" unique="true" />
             </column>
             <column name="price" type="DOUBLE PRECISION">
@@ -169,5 +215,179 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <createTable tableName="orders_info">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="order_status" type="BIGINT">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_coordinates" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="time" type="BIGINT">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+        <createTable tableName="order_status">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="status" type="varchar(100)"></column>
+        </createTable>
+        <createTable tableName="cars_status">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="status" type="varchar(100)"></column>
+        </createTable>
+        <createTable tableName="cars">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_status" type="BIGINT">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_manufacturer" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_model" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_color" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="car_government_number" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+<!--    insert data in table orders-->
+    <changeSet id="1.0.7" author="stepan.vasilyev">
+        <insert tableName="orders">
+            <column name="car_id" value="1"/>
+            <column name="time" value="360"/>
+            <column name="price" value="14"/>
+            <column name="distance" value="2800"/>
+            <column name="start_coordinate" value="53.12632262332512, 18.020900863176767"/>
+            <column name="finish_coordinate" value="53.11639604691738, 18.01057035270834"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="car_id" value="2"/>
+            <column name="time" value="420"/>
+            <column name="price" value="22"/>
+            <column name="distance" value="4300"/>
+            <column name="start_coordinate" value="53.11639604691738, 18.01057035270834"/>
+            <column name="finish_coordinate" value="53.11763310961696, 17.964920410529793"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="car_id" value="3"/>
+            <column name="time" value="720"/>
+            <column name="price" value="45"/>
+            <column name="distance" value="9000"/>
+            <column name="start_coordinate" value="53.130756661034255, 17.993315365446445"/>
+            <column name="finish_coordinate" value="53.18677101784518, 18.071504484261883"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="car_id" value="4"/>
+            <column name="time" value="7860"/>
+            <column name="price" value="895"/>
+            <column name="distance" value="179000"/>
+            <column name="start_coordinate" value="53.124333657962126, 18.04169921606076"/>
+            <column name="finish_coordinate" value="54.37901644755888, 18.589521109845254"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.0.8" author="stepan.vasilyev">
+        <insert tableName="order_status">
+            <column name="status" value="CAR_ON_WAY"/>
+        </insert>
+        <insert tableName="order_status">
+            <column name="status" value="CAR_ARRIVED"/>
+        </insert>
+        <insert tableName="order_status">
+            <column name="status" value="ORDER_EXECUTION"/>
+        </insert>
+        <insert tableName="order_status">
+            <column name="status" value="ORDER_PAYMENT"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.0.9" author="stepan.vasilyev">
+        <insert tableName="cars_status">
+            <column name="status" value="ON_WAY"/>
+        </insert>
+        <insert tableName="cars_status">
+            <column name="status" value="OFF_WAY"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.0.10" author="stepan.vasilyev">
+        <insert tableName="orders_info">
+            <column name="order_id" value="1"/>
+            <column name="order_status" value="4"/>
+            <column name="car_coordinates" value="53.124333657962126, 18.04169921606076"/>
+            <column name="time" value="300"/>
+        </insert>
+        <insert tableName="orders_info">
+            <column name="order_id" value="2"/>
+            <column name="order_status" value="2"/>
+            <column name="car_coordinates" value="53.18677101784518, 18.071504484261883"/>
+            <column name="time" value="240"/>
+        </insert>
+        <insert tableName="orders_info">
+            <column name="order_id" value="3"/>
+            <column name="order_status" value="3"/>
+            <column name="car_coordinates" value="53.11763310961696, 17.964920410529793"/>
+            <column name="time" value="60"/>
+        </insert>
+        <insert tableName="orders_info">
+            <column name="order_id" value="4"/>
+            <column name="order_status" value="1"/>
+            <column name="car_coordinates" value="53.11639604691738, 18.01057035270834"/>
+            <column name="time" value="120"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.0.11" author="stepan.vasilyev">
+        <insert tableName="cars">
+            <column name="user_id" value="3"/>
+            <column name="car_status" value="1"/>
+            <column name="car_manufacturer" value="Volkswagen"/>
+            <column name="car_model" value="Polo"/>
+            <column name="car_color" value="White"/>
+            <column name="car_government_number" value="AV22447"/>
+        </insert>
+        <insert tableName="cars">
+            <column name="user_id" value="4"/>
+            <column name="car_status" value="1"/>
+            <column name="car_manufacturer" value="BMW"/>
+            <column name="car_model" value="b34"/>
+            <column name="car_color" value="Black"/>
+            <column name="car_government_number" value="NR52387"/>
+        </insert>
+        <insert tableName="cars">
+            <column name="user_id" value="5"/>
+            <column name="car_status" value="1"/>
+            <column name="car_manufacturer" value="Vesta"/>
+            <column name="car_model" value="Lada"/>
+            <column name="car_color" value="Blue"/>
+            <column name="car_government_number" value="MR63405"/>
+        </insert>
+        <insert tableName="cars">
+            <column name="user_id" value="6"/>
+            <column name="car_status" value="2"/>
+            <column name="car_manufacturer" value="Volkswagen"/>
+            <column name="car_model" value="Passat"/>
+            <column name="car_color" value="Grey"/>
+            <column name="car_government_number" value="YR84355"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

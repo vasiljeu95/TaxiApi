@@ -1,4 +1,4 @@
-package com.github.vasiljeu95.taxiapi.restController;
+package com.github.vasiljeu95.taxiapi.controller;
 
 import com.github.vasiljeu95.taxiapi.configuration.jwt.JwtTokenProvider;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.AuthenticationRequestDto;

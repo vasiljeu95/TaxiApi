@@ -1,6 +1,5 @@
-package com.github.vasiljeu95.taxiapi.restController;
+package com.github.vasiljeu95.taxiapi.controller;
 
-import com.github.vasiljeu95.taxiapi.dto.AdminUserDto;
 import com.github.vasiljeu95.taxiapi.dto.OrderDto;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.OrderByIdRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.TripCostRequestDto;
