@@ -1,5 +1,6 @@
-package com.github.vasiljeu95.taxiapi.entity;
+package com.github.vasiljeu95.taxiapi.entity.user;
 
+import com.github.vasiljeu95.taxiapi.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

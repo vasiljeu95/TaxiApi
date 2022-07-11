@@ -2,7 +2,7 @@ package com.github.vasiljeu95.taxiapi.service;
 
 import com.github.vasiljeu95.taxiapi.configuration.jwt.JwtUser;
 import com.github.vasiljeu95.taxiapi.configuration.jwt.JwtUserFactory;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

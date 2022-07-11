@@ -1,6 +1,6 @@
 package com.github.vasiljeu95.taxiapi.repository;
 
-import com.github.vasiljeu95.taxiapi.entity.Order;
+import com.github.vasiljeu95.taxiapi.entity.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

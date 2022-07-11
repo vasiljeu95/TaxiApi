@@ -1,7 +1,7 @@
 package com.github.vasiljeu95.taxiapi.mapper;
 
 import com.github.vasiljeu95.taxiapi.dto.NewUserDto;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

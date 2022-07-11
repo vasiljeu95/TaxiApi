@@ -1,11 +1,12 @@
 package com.github.vasiljeu95.taxiapi.controller;
 
+import com.github.vasiljeu95.taxiapi.dto.ExecuteOrderDto;
 import com.github.vasiljeu95.taxiapi.dto.OrderDto;
-import com.github.vasiljeu95.taxiapi.dto.requestDto.OrderByIdRequestDto;
+import com.github.vasiljeu95.taxiapi.dto.requestDto.ByIdRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.TripCostRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.UserDto;
-import com.github.vasiljeu95.taxiapi.entity.Order;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.order.Order;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.service.OrderServiceImpl;
 import com.github.vasiljeu95.taxiapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,7 @@ public class UserRestController {
 
         OrderDto orderDto = new OrderDto();
         orderDto.setCarId(1L);
-        orderDto.setWaitingTime(300L);
+        orderDto.setOrderTime(300L);
         orderDto.setPrice(50d);
         orderDto.setDistance("2.25");
         orderDto.setStartCoordinate("53.125354, 17.986678");
@@ -102,14 +103,27 @@ public class UserRestController {
     }
 
     @PostMapping("getOrderById")
-    public ResponseEntity getOrderById (@RequestBody OrderByIdRequestDto orderByIdRequestDto) {
-        Long id = orderByIdRequestDto.getId();
+    public ResponseEntity findOrderById (@RequestBody ByIdRequestDto byIdRequestDto) {
+        Long id = byIdRequestDto.getId();
 
         Order order = orderService.findOrderById(id);
         if (order == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         OrderDto result = OrderDto.fromOrder(order);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping("getExecutionOrderById")
+    public ResponseEntity findExecutionOrderById (@RequestBody ByIdRequestDto byIdRequestDto) {
+        Long id = byIdRequestDto.getId();
+
+        Order order = orderService.findOrderById(id);
+        if (order == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        ExecuteOrderDto result = ExecuteOrderDto.fromOrder(order);
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

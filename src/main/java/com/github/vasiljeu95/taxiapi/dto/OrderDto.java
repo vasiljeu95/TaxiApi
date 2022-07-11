@@ -1,10 +1,8 @@
 package com.github.vasiljeu95.taxiapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.github.vasiljeu95.taxiapi.entity.Order;
+import com.github.vasiljeu95.taxiapi.entity.order.Order;
 import lombok.Data;
-
-import javax.persistence.Column;
 
 /**
  * OrderRequestDto
@@ -17,7 +15,7 @@ import javax.persistence.Column;
 public class OrderDto {
     public Long id;
     public Long carId;
-    public Long waitingTime;
+    public Long orderTime;
     public double price;
     public String distance;
     public String startCoordinate;
@@ -27,7 +25,7 @@ public class OrderDto {
         Order order = new Order();
         order.setId(id);
         order.setCarId(carId);
-        order.setWaitingTime(waitingTime);
+        order.setOrderTime(orderTime);
         order.setPrice(price);
         order.setDistance(distance);
         order.setStartCoordinate(startCoordinate);
@@ -40,7 +38,7 @@ public class OrderDto {
         OrderDto orderDto = new OrderDto();
         orderDto.setId(order.getId());
         orderDto.setCarId(order.getCarId());
-        orderDto.setWaitingTime(order.getWaitingTime());
+        orderDto.setOrderTime(order.getOrderTime());
         orderDto.setPrice(order.getPrice());
         orderDto.setDistance(order.getDistance());
         orderDto.setStartCoordinate(order.getStartCoordinate());

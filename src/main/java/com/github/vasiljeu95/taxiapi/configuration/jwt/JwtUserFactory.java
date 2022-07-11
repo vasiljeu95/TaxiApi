@@ -1,8 +1,8 @@
 package com.github.vasiljeu95.taxiapi.configuration.jwt;
 
-import com.github.vasiljeu95.taxiapi.entity.Role;
+import com.github.vasiljeu95.taxiapi.entity.user.Role;
 import com.github.vasiljeu95.taxiapi.entity.Status;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

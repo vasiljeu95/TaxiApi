@@ -1,8 +1,7 @@
 package com.github.vasiljeu95.taxiapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.github.vasiljeu95.taxiapi.entity.Car;
-import com.github.vasiljeu95.taxiapi.entity.CarType;
+import com.github.vasiljeu95.taxiapi.entity.car.Car;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

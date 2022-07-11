@@ -1,6 +1,6 @@
 package com.github.vasiljeu95.taxiapi.configuration.jwt;
 
-import com.github.vasiljeu95.taxiapi.entity.Role;
+import com.github.vasiljeu95.taxiapi.entity.user.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;

@@ -2,7 +2,7 @@ package com.github.vasiljeu95.taxiapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.vasiljeu95.taxiapi.entity.Status;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import lombok.Data;
 
 /**

@@ -3,7 +3,7 @@ package com.github.vasiljeu95.taxiapi.controller;
 import com.github.vasiljeu95.taxiapi.configuration.jwt.JwtTokenProvider;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.AuthenticationRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.NewUserDto;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.mapper.UserMapperImpl;
 import com.github.vasiljeu95.taxiapi.service.UserServiceImp;
 import lombok.RequiredArgsConstructor;

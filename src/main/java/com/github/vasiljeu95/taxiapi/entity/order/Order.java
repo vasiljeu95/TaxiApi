@@ -1,5 +1,6 @@
-package com.github.vasiljeu95.taxiapi.entity;
+package com.github.vasiljeu95.taxiapi.entity.order;
 
+import com.github.vasiljeu95.taxiapi.entity.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -16,10 +17,8 @@ import javax.persistence.Table;
 @Table(name = "orders")
 @Data
 public class Order extends BaseEntity {
-    @Column(name = "car_id")
-    public Long carId;
-    @Column(name = "waiting_time")
-    public Long waitingTime;
+    @Column(name = "order_time")
+    public Long orderTime;
     @Column(name = "price")
     public double price;
     @Column(name = "distance")
@@ -28,4 +27,10 @@ public class Order extends BaseEntity {
     public String startCoordinate;
     @Column(name = "finish_coordinate")
     public String finishCoordinate;
+    @Column(name = "car_coordinates")
+    public String carCoordinate;
+    @Column(name = "car_id")
+    public Long carId;
+    @Column(name = "execution_status_id")
+    public Long executionStatusId;
 }

@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 08.07.2022
  */
 @Data
-public class OrderByIdRequestDto {
+public class ByIdRequestDto {
     private String id;
 
     public Long getId() {

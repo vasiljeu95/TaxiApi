@@ -183,27 +183,41 @@
 
 <!--    create tables-->
     <changeSet id="1.0.6" author="stepan.vasilyev">
+        <createTable tableName="execution_status">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="status" type="varchar(100)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
         <createTable tableName="orders">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="car_id" type="BIGINT">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="time" type="BIGINT">
-                <constraints nullable="false" unique="true" />
+            <column name="order_time" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
             <column name="price" type="DOUBLE PRECISION">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
             </column>
             <column name="distance" type="varchar(100)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
             </column>
             <column name="start_coordinate" type="varchar(100)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
             </column>
             <column name="finish_coordinate" type="varchar(100)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
+            </column>
+            <column name="car_coordinates" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="car_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execution_status_id" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
             <column name="status" type="varchar(25)" defaultValue="ACTIVE">
                 <constraints nullable="false"/>
@@ -215,35 +229,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <createTable tableName="orders_info">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="order_id" type="BIGINT">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="order_status" type="BIGINT">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="car_coordinates" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="time" type="BIGINT">
-                <constraints nullable="false" unique="true" />
-            </column>
-        </createTable>
-        <createTable tableName="order_status">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="status" type="varchar(100)"></column>
-        </createTable>
-        <createTable tableName="cars_status">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="status" type="varchar(100)"></column>
-        </createTable>
         <createTable tableName="cars">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
@@ -251,19 +236,27 @@
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false" unique="true" />
             </column>
-            <column name="car_status" type="BIGINT">
-                <constraints nullable="false" unique="true" />
+            <column name="car_status_id" type="BIGINT">
+                <constraints nullable="false" />
             </column>
             <column name="car_manufacturer" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false" />
             </column>
             <column name="car_model" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
             </column>
             <column name="car_color" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false"/>
             </column>
             <column name="car_government_number" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+        <createTable tableName="car_status">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="status" type="varchar(100)">
                 <constraints nullable="false" unique="true" />
             </column>
         </createTable>
@@ -272,94 +265,78 @@
 <!--    insert data in table orders-->
     <changeSet id="1.0.7" author="stepan.vasilyev">
         <insert tableName="orders">
-            <column name="car_id" value="1"/>
-            <column name="time" value="360"/>
+            <column name="order_time" value="360"/>
             <column name="price" value="14"/>
             <column name="distance" value="2800"/>
             <column name="start_coordinate" value="53.12632262332512, 18.020900863176767"/>
             <column name="finish_coordinate" value="53.11639604691738, 18.01057035270834"/>
+            <column name="car_coordinates" value="53.124333657962126, 18.04169921606076"/>
+            <column name="car_id" value="1"/>
+            <column name="execution_status_id" value="4"/>
         </insert>
         <insert tableName="orders">
-            <column name="car_id" value="2"/>
-            <column name="time" value="420"/>
+            <column name="order_time" value="420"/>
             <column name="price" value="22"/>
             <column name="distance" value="4300"/>
             <column name="start_coordinate" value="53.11639604691738, 18.01057035270834"/>
             <column name="finish_coordinate" value="53.11763310961696, 17.964920410529793"/>
+            <column name="car_coordinates" value="53.18677101784518, 18.071504484261883"/>
+            <column name="car_id" value="2"/>
+            <column name="execution_status_id" value="2"/>
         </insert>
         <insert tableName="orders">
-            <column name="car_id" value="3"/>
-            <column name="time" value="720"/>
+            <column name="order_time" value="720"/>
             <column name="price" value="45"/>
             <column name="distance" value="9000"/>
             <column name="start_coordinate" value="53.130756661034255, 17.993315365446445"/>
             <column name="finish_coordinate" value="53.18677101784518, 18.071504484261883"/>
+            <column name="car_coordinates" value="53.11763310961696, 17.964920410529793"/>
+            <column name="car_id" value="3"/>
+            <column name="execution_status_id" value="3"/>
         </insert>
         <insert tableName="orders">
-            <column name="car_id" value="4"/>
-            <column name="time" value="7860"/>
+            <column name="order_time" value="7860"/>
             <column name="price" value="895"/>
             <column name="distance" value="179000"/>
             <column name="start_coordinate" value="53.124333657962126, 18.04169921606076"/>
             <column name="finish_coordinate" value="54.37901644755888, 18.589521109845254"/>
+            <column name="car_coordinates" value="53.11639604691738, 18.01057035270834"/>
+            <column name="car_id" value="4"/>
+            <column name="execution_status_id" value="1"/>
         </insert>
     </changeSet>
 
+<!--    insert data in table execution_status-->
     <changeSet id="1.0.8" author="stepan.vasilyev">
-        <insert tableName="order_status">
+        <insert tableName="execution_status">
             <column name="status" value="CAR_ON_WAY"/>
         </insert>
-        <insert tableName="order_status">
+        <insert tableName="execution_status">
             <column name="status" value="CAR_ARRIVED"/>
         </insert>
-        <insert tableName="order_status">
+        <insert tableName="execution_status">
             <column name="status" value="ORDER_EXECUTION"/>
         </insert>
-        <insert tableName="order_status">
+        <insert tableName="execution_status">
             <column name="status" value="ORDER_PAYMENT"/>
         </insert>
     </changeSet>
 
+    <!--    insert data in table car_status-->
     <changeSet id="1.0.9" author="stepan.vasilyev">
-        <insert tableName="cars_status">
+        <insert tableName="car_status">
             <column name="status" value="ON_WAY"/>
         </insert>
-        <insert tableName="cars_status">
+        <insert tableName="car_status">
             <column name="status" value="OFF_WAY"/>
         </insert>
     </changeSet>
 
+    <!--    insert data in table cars-->
     <changeSet id="1.0.10" author="stepan.vasilyev">
-        <insert tableName="orders_info">
-            <column name="order_id" value="1"/>
-            <column name="order_status" value="4"/>
-            <column name="car_coordinates" value="53.124333657962126, 18.04169921606076"/>
-            <column name="time" value="300"/>
-        </insert>
-        <insert tableName="orders_info">
-            <column name="order_id" value="2"/>
-            <column name="order_status" value="2"/>
-            <column name="car_coordinates" value="53.18677101784518, 18.071504484261883"/>
-            <column name="time" value="240"/>
-        </insert>
-        <insert tableName="orders_info">
-            <column name="order_id" value="3"/>
-            <column name="order_status" value="3"/>
-            <column name="car_coordinates" value="53.11763310961696, 17.964920410529793"/>
-            <column name="time" value="60"/>
-        </insert>
-        <insert tableName="orders_info">
-            <column name="order_id" value="4"/>
-            <column name="order_status" value="1"/>
-            <column name="car_coordinates" value="53.11639604691738, 18.01057035270834"/>
-            <column name="time" value="120"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="1.0.11" author="stepan.vasilyev">
         <insert tableName="cars">
             <column name="user_id" value="3"/>
-            <column name="car_status" value="1"/>
+            <column name="car_status_id" value="1"/>
             <column name="car_manufacturer" value="Volkswagen"/>
             <column name="car_model" value="Polo"/>
             <column name="car_color" value="White"/>
@@ -367,7 +344,7 @@
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="4"/>
-            <column name="car_status" value="1"/>
+            <column name="car_status_id" value="1"/>
             <column name="car_manufacturer" value="BMW"/>
             <column name="car_model" value="b34"/>
             <column name="car_color" value="Black"/>
@@ -375,7 +352,7 @@
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="5"/>
-            <column name="car_status" value="1"/>
+            <column name="car_status_id" value="1"/>
             <column name="car_manufacturer" value="Vesta"/>
             <column name="car_model" value="Lada"/>
             <column name="car_color" value="Blue"/>
@@ -383,7 +360,7 @@
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="6"/>
-            <column name="car_status" value="2"/>
+            <column name="car_status_id" value="2"/>
             <column name="car_manufacturer" value="Volkswagen"/>
             <column name="car_model" value="Passat"/>
             <column name="car_color" value="Grey"/>

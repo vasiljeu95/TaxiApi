@@ -1,6 +1,6 @@
 package com.github.vasiljeu95.taxiapi.service;
 
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 
 import java.util.List;
 

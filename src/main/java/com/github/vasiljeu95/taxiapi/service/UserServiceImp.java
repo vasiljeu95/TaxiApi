@@ -1,8 +1,8 @@
 package com.github.vasiljeu95.taxiapi.service;
 
-import com.github.vasiljeu95.taxiapi.entity.Role;
+import com.github.vasiljeu95.taxiapi.entity.user.Role;
 import com.github.vasiljeu95.taxiapi.entity.Status;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.repository.RoleRepository;
 import com.github.vasiljeu95.taxiapi.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;

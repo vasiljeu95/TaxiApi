@@ -1,7 +1,7 @@
 package com.github.vasiljeu95.taxiapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.github.vasiljeu95.taxiapi.entity.User;
+import com.github.vasiljeu95.taxiapi.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,15 +22,5 @@ public class NewUserDto {
     private String firstName;
     private String lastName;
     private String email;
-
-//    public User toUser () {
-//        User user = new User();
-//        user.setUsername(username);
-//        user.setFirstname(firstName);
-//        user.setLastname(lastName);
-//        user.setEmail(email);
-//
-//        return user;
-//    }
 }
 

@@ -1,5 +1,6 @@
-package com.github.vasiljeu95.taxiapi.entity;
+package com.github.vasiljeu95.taxiapi.entity.car;
 
+import com.github.vasiljeu95.taxiapi.entity.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.*;
