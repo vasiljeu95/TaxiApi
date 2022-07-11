@@ -60,55 +60,21 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order createOrder (TripCostRequestDto tripCostRequestDto) {
-//        double pointALatitude = Double.parseDouble(tripCostRequestDto.getStartCoordinateLatitude());
-//        double pointALongitude = Double.parseDouble(tripCostRequestDto.getStartCoordinateLongitude());
-//        double pointBLatitude = Double.parseDouble(tripCostRequestDto.getFinishCoordinateLatitude());
-//        double pointBLongitude = Double.parseDouble(tripCostRequestDto.getFinishCoordinateLongitude());
-//
-//        double tripDistance = distance(pointALatitude, pointALongitude, pointBLatitude, pointBLongitude);
-//        double carSpeed = 40.0;
-//        double tariff = 5;
-//
-//        Order order = new Order();
-//        Date now = new Date();
-//
-//        order.setStatus(Status.ACTIVE);
-//        order.setCreated(now);
-//        order.setUpdated(now);
-//
-//        order.setOrderTime((long) (tripDistance / carSpeed * 3600));
-//        order.setPrice(tripDistance * tariff);
-//        order.setDistance(String.valueOf(tripDistance));
-//        order.setStartCoordinate(String.valueOf(pointALatitude) + ", " + String.valueOf(pointALongitude));
-//        order.setFinishCoordinate(String.valueOf(pointBLatitude) + ", " + String.valueOf(pointBLongitude));
-//
-//        // TODO
-//        order.setCarCoordinate("unknown");
-//        order.setCarId(1L);
-//        order.setExecutionStatusId(1L);
-//
-//        log.info("IN info - trip cost: {} successfully matrix", order);
+        Order order = tripCost(tripCostRequestDto);
+        Date date = new Date();
 
-        return null;
-    }
+        order.setStatus(Status.ACTIVE);
+        order.setCreated(date);
+        order.setUpdated(date);
 
-    private double distance (double lat1, double lon1, double lat2, double lon2) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
+        order.setCarCoordinate("unknown");
+        order.setCarId(1L);
+        order.setExecutionStatusId(1L);
 
-        dist = dist * 1.609344;
+        log.info("IN info - order: {} successfully create", order);
 
-        return (dist);
-    }
+        Order registrationOrder = orderRepository.save(order);
 
-    private double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    private double rad2deg(double rad) {
-        return (rad * 180.0 / Math.PI);
+        return registrationOrder;
     }
 }

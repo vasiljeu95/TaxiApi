@@ -13,11 +13,11 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class TripCostDto {
-    public Long orderTime;
-    public double price;
-    public double distance;
-    public String startCoordinate;
-    public String finishCoordinate;
+    private Long orderTime;
+    private double price;
+    private double distance;
+    private String startCoordinate;
+    private String finishCoordinate;
 
     public static TripCostDto fromOrder (Order order) {
         TripCostDto tripCostDto = new TripCostDto();

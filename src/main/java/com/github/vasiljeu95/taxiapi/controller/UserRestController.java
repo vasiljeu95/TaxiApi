@@ -49,53 +49,18 @@ public class UserRestController {
     @PostMapping("tripCost")
     public ResponseEntity tripCost (@RequestBody TripCostRequestDto tripCostRequestDto) {
         Order order = orderService.tripCost(tripCostRequestDto);
-        TripCostDto tripCostDto = new TripCostDto();
 
-        return ResponseEntity.ok(tripCostDto.fromOrder(order));
+        return ResponseEntity.ok(TripCostDto.fromOrder(order));
     }
 
-//    @PostMapping("createOrder")
-//    public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
-//        String startCoordinate = tripCostRequestDto.getStartCoordinate();
-//        String finishCoordinate = tripCostRequestDto.getFinishCoordinate();
-//
-//        Map<Object, Object> orderMap = new HashMap<>();
-//        Map<Object, Object> carInfo = new HashMap<>();
-//        orderMap.put("orderId","1");
-//        orderMap.put("waitingTime","300");
-//        orderMap.put("price", "50");
-//        orderMap.put("distance", "5");
-//        orderMap.put("startCoordinate", startCoordinate);
-//        orderMap.put("finishCoordinate", finishCoordinate);
-//        carInfo.put("carManufacturer","Volkswagen");
-//        carInfo.put("carModel","Polo Sedan");
-//        carInfo.put("carColor","Black");
-//        carInfo.put("carGovernmentNumber","AV44227");
-//        orderMap.put("carInfo", carInfo);
-//
-//        return ResponseEntity.ok(orderMap);
-//    }
+    @PostMapping("createOrder")
+    public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
+        Order order = orderService.createOrder(tripCostRequestDto);
+//        return ResponseEntity.ok(OrderDto.fromOrder(order));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
-//    @PostMapping("createOrder")
-//    public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
-//        String startCoordinate = tripCostRequestDto.getStartCoordinate();
-//        String finishCoordinate = tripCostRequestDto.getFinishCoordinate();
-//
-//        // TODO some method with tripCostRequestDto calculate to OrderDto
-//
-//        OrderDto orderDto = new OrderDto();
-//        orderDto.setCarId(1L);
-//        orderDto.setOrderTime(300L);
-//        orderDto.setPrice(50d);
-//        orderDto.setDistance("2.25");
-//        orderDto.setStartCoordinate("53.125354, 17.986678");
-//        orderDto.setFinishCoordinate("53.108045, 18.007878");
-//
-//        orderService.orderRegist(orderDto.toOrder());
-//        return new ResponseEntity<>(orderDto, HttpStatus.CREATED);
-//    }
-
-    @PostMapping("getOrderById")
+    @PostMapping("findOrderById")
     public ResponseEntity findOrderById (@RequestBody ByIdRequestDto byIdRequestDto) {
         Long id = byIdRequestDto.getId();
 
@@ -107,7 +72,7 @@ public class UserRestController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PostMapping("getExecutionOrderById")
+    @PostMapping("findExecutionOrderById")
     public ResponseEntity findExecutionOrderById (@RequestBody ByIdRequestDto byIdRequestDto) {
         Long id = byIdRequestDto.getId();
 

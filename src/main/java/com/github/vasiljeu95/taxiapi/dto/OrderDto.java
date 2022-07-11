@@ -1,8 +1,11 @@
 package com.github.vasiljeu95.taxiapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.github.vasiljeu95.taxiapi.entity.Status;
 import com.github.vasiljeu95.taxiapi.entity.order.Order;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * OrderRequestDto
@@ -13,15 +16,18 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class OrderDto {
-    public Long id;
-    public Long orderTime;
-    public double price;
-    public double distance;
-    public String startCoordinate;
-    public String finishCoordinate;
-    public String carCoordinate;
-    public Long carId;
-    public Long executionStatusId;
+    private Long id;
+    private Long orderTime;
+    private double price;
+    private double distance;
+    private String startCoordinate;
+    private String finishCoordinate;
+    private String carCoordinate;
+    private Long carId;
+    private Long executionStatusId;
+    private Date created;
+    private Date updated;
+    private Status status;
 
     public Order toOrder () {
         Order order = new Order();
@@ -34,6 +40,9 @@ public class OrderDto {
         order.setCarCoordinate(carCoordinate);
         order.setCarId(carId);
         order.setExecutionStatusId(executionStatusId);
+        order.setCreated(created);
+        order.setUpdated(updated);
+        order.setStatus(status);
 
         return order;
     }
@@ -50,6 +59,9 @@ public class OrderDto {
         orderDto.setCarCoordinate(order.getCarCoordinate());
         orderDto.setCarId(order.getCarId());
         orderDto.setExecutionStatusId(order.getExecutionStatusId());
+        orderDto.setCreated(order.getCreated());
+        orderDto.setUpdated(order.getUpdated());
+        orderDto.setStatus(order.getStatus());
 
         return orderDto;
     }

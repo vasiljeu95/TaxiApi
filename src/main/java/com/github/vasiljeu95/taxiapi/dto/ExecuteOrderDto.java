@@ -13,9 +13,9 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class ExecuteOrderDto {
-    public Long id;
-    public Long executionStatusId;
-    public String  carCoordinate;
+    private Long id;
+    private Long executionStatusId;
+    private String  carCoordinate;
 
     public Order toOrder () {
         Order order = new Order();
