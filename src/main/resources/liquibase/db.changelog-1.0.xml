@@ -201,7 +201,7 @@
             <column name="price" type="DOUBLE PRECISION">
                 <constraints nullable="false"/>
             </column>
-            <column name="distance" type="varchar(100)">
+            <column name="distance" type="DOUBLE PRECISION">
                 <constraints nullable="false"/>
             </column>
             <column name="start_coordinate" type="varchar(100)">

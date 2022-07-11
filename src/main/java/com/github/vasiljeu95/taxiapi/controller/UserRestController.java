@@ -2,6 +2,7 @@ package com.github.vasiljeu95.taxiapi.controller;
 
 import com.github.vasiljeu95.taxiapi.dto.ExecuteOrderDto;
 import com.github.vasiljeu95.taxiapi.dto.OrderDto;
+import com.github.vasiljeu95.taxiapi.dto.TripCostDto;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.ByIdRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.requestDto.TripCostRequestDto;
 import com.github.vasiljeu95.taxiapi.dto.UserDto;
@@ -47,18 +48,10 @@ public class UserRestController {
 
     @PostMapping("tripCost")
     public ResponseEntity tripCost (@RequestBody TripCostRequestDto tripCostRequestDto) {
-//        TODO: create some method with Tariff logic
-        String startCoordinate = tripCostRequestDto.getStartCoordinate();
-        String finishCoordinate = tripCostRequestDto.getFinishCoordinate();
+        Order order = orderService.tripCost(tripCostRequestDto);
+        TripCostDto tripCostDto = new TripCostDto();
 
-        Map<Object, Object> tripCostMap = new HashMap<>();
-        tripCostMap.put("tripDistance", "5");
-        tripCostMap.put("tripTime", "150");
-        tripCostMap.put("tripPrice", "50");
-        tripCostMap.put("startCoordinate", startCoordinate);
-        tripCostMap.put("finishCoordinate", finishCoordinate);
-
-        return ResponseEntity.ok(tripCostMap);
+        return ResponseEntity.ok(tripCostDto.fromOrder(order));
     }
 
 //    @PostMapping("createOrder")
@@ -83,24 +76,24 @@ public class UserRestController {
 //        return ResponseEntity.ok(orderMap);
 //    }
 
-    @PostMapping("createOrder")
-    public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
-        String startCoordinate = tripCostRequestDto.getStartCoordinate();
-        String finishCoordinate = tripCostRequestDto.getFinishCoordinate();
-
-        // TODO some method with tripCostRequestDto calculate to OrderDto
-
-        OrderDto orderDto = new OrderDto();
-        orderDto.setCarId(1L);
-        orderDto.setOrderTime(300L);
-        orderDto.setPrice(50d);
-        orderDto.setDistance("2.25");
-        orderDto.setStartCoordinate("53.125354, 17.986678");
-        orderDto.setFinishCoordinate("53.108045, 18.007878");
-
-        orderService.orderRegist(orderDto.toOrder());
-        return new ResponseEntity<>(orderDto, HttpStatus.CREATED);
-    }
+//    @PostMapping("createOrder")
+//    public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
+//        String startCoordinate = tripCostRequestDto.getStartCoordinate();
+//        String finishCoordinate = tripCostRequestDto.getFinishCoordinate();
+//
+//        // TODO some method with tripCostRequestDto calculate to OrderDto
+//
+//        OrderDto orderDto = new OrderDto();
+//        orderDto.setCarId(1L);
+//        orderDto.setOrderTime(300L);
+//        orderDto.setPrice(50d);
+//        orderDto.setDistance("2.25");
+//        orderDto.setStartCoordinate("53.125354, 17.986678");
+//        orderDto.setFinishCoordinate("53.108045, 18.007878");
+//
+//        orderService.orderRegist(orderDto.toOrder());
+//        return new ResponseEntity<>(orderDto, HttpStatus.CREATED);
+//    }
 
     @PostMapping("getOrderById")
     public ResponseEntity findOrderById (@RequestBody ByIdRequestDto byIdRequestDto) {

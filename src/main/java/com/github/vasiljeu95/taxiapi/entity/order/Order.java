@@ -22,7 +22,7 @@ public class Order extends BaseEntity {
     @Column(name = "price")
     public double price;
     @Column(name = "distance")
-    public String distance;
+    public double distance;
     @Column(name = "start_coordinate")
     public String startCoordinate;
     @Column(name = "finish_coordinate")

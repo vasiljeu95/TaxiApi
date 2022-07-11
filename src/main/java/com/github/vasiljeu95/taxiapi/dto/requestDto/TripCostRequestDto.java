@@ -10,6 +10,8 @@ import lombok.Data;
  */
 @Data
 public class TripCostRequestDto {
-    private String startCoordinate;
-    private String finishCoordinate;
+    private String startCoordinateLatitude;
+    private String startCoordinateLongitude;
+    private String finishCoordinateLatitude;
+    private String finishCoordinateLongitude;
 }
