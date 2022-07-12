@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String AUTH_ENDPOINT = "/api/auth/**";
     private static final String USER_ENDPOINT = "/api/users/**";
     private static final String DRIVER_ENDPOINT = "/api/drivers/**";
+    private static final String SWAGGER_ENDPOINT = "/swagger-ui.html";
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -44,14 +45,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(AUTH_ENDPOINT).permitAll()
+                .antMatchers(SWAGGER_ENDPOINT).permitAll()
                 .antMatchers(USER_ENDPOINT).hasRole("USER")
                 .antMatchers(USER_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(DRIVER_ENDPOINT).hasRole("DRIVER")
                 .antMatchers(DRIVER_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/**/*.css",
+                        "/**/*.html",
+                        "/**/*.js",
+                        "/**/*.json",
+                        "/**/*.bmp",
+                        "/**/*.jpeg",
+                        "/**/*.jpg",
+                        "/**/*.png",
+                        "/**/*.ttf",
+                        "/**/*.eot",
+                        "/**/*.svg",
+                        "/**/*.woff",
+                        "/**/*.woff2").permitAll()
+                .antMatchers("/v2/api-docs").permitAll()
+                .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .apply(new JwtConfigurer(jwtTokenProvider));
+                .apply(new JwtConfigurer(jwtTokenProvider))
+        ;
         httpSecurity
                 .headers().frameOptions().sameOrigin();
     }
