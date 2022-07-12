@@ -2,6 +2,8 @@ package com.github.vasiljeu95.taxiapi.controller;
 
 import com.github.vasiljeu95.taxiapi.dto.car.CarDto;
 import com.github.vasiljeu95.taxiapi.dto.car.CreateCarDto;
+import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarCoordinateDto;
+import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarStatusDto;
 import com.github.vasiljeu95.taxiapi.entity.car.Car;
 import com.github.vasiljeu95.taxiapi.service.DriverServiceImpl;
 import com.github.vasiljeu95.taxiapi.service.OrderServiceImpl;
@@ -36,5 +38,19 @@ public class DriverRestController {
         Car car = driverService.createCar(createCarDto);
 
         return new ResponseEntity<>(CarDto.fromCar(car), HttpStatus.CREATED);
+    }
+
+    @PostMapping("updateCarCoordinate")
+    public ResponseEntity updateCarCoordinate (@RequestBody UpdateCarCoordinateDto updateCarCoordinateDto) {
+        driverService.updateCarCoordinate(updateCarCoordinateDto);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("updateCarStatus")
+    public ResponseEntity updateCarStatus (@RequestBody UpdateCarStatusDto updateCarStatusDto) {
+        driverService.updateCarStatus(updateCarStatusDto);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

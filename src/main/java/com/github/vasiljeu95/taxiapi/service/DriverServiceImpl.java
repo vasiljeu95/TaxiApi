@@ -1,6 +1,8 @@
 package com.github.vasiljeu95.taxiapi.service;
 
 import com.github.vasiljeu95.taxiapi.dto.car.CreateCarDto;
+import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarCoordinateDto;
+import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarStatusDto;
 import com.github.vasiljeu95.taxiapi.entity.car.Car;
 import com.github.vasiljeu95.taxiapi.repository.DriverRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -40,5 +42,21 @@ public class DriverServiceImpl implements DriverService {
         log.info("IN info - car: {} successfully create", car);
 
         return registrationCar;
+    }
+
+    @Override
+    public void updateCarCoordinate(UpdateCarCoordinateDto updateCarCoordinateDto) {
+        Long id = updateCarCoordinateDto.getId();
+        String coordinates = updateCarCoordinateDto.getCarCoordinates();
+
+        driverRepository.updateCarCoordinate(id, coordinates);
+    }
+
+    @Override
+    public void updateCarStatus (UpdateCarStatusDto updateCarStatusDto) {
+        Long id = updateCarStatusDto.getId();
+        Long carStatusId = updateCarStatusDto.getCarStatusId();
+
+        driverRepository.updateCarStatus(id, carStatusId);
     }
 }
