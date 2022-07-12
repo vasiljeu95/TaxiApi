@@ -29,8 +29,6 @@ public class Order extends BaseEntity {
     private String startCoordinate;
     @Column(name = "finish_coordinate")
     private String finishCoordinate;
-    @Column(name = "car_coordinates")
-    private String carCoordinate;
     @Column(name = "car_id")
     private Long carId;
     @Column(name = "execution_status_id")

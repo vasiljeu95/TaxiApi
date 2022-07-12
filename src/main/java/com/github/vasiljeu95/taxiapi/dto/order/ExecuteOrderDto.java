@@ -21,7 +21,6 @@ public class ExecuteOrderDto {
         Order order = new Order();
         order.setId(id);
         order.setExecutionStatusId(executionStatusId);
-        order.setCarCoordinate(carCoordinate);
 
         return order;
     }
@@ -30,7 +29,6 @@ public class ExecuteOrderDto {
         ExecuteOrderDto executeOrderDto = new ExecuteOrderDto();
         executeOrderDto.setId(order.getId());
         executeOrderDto.setExecutionStatusId(order.getExecutionStatusId());
-        executeOrderDto.setCarCoordinate(order.getCarCoordinate());
 
         return executeOrderDto;
     }

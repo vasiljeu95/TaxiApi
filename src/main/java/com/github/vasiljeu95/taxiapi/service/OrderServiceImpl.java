@@ -67,7 +67,6 @@ public class OrderServiceImpl implements OrderService{
         order.setCreated(date);
         order.setUpdated(date);
 
-        order.setCarCoordinate("unknown");
         order.setCarId(1L);
         order.setExecutionStatusId(1L);
 

@@ -22,7 +22,6 @@ public class OrderDto {
     private double distance;
     private String startCoordinate;
     private String finishCoordinate;
-    private String carCoordinate;
     private Long carId;
     private Long executionStatusId;
     private Date created;
@@ -37,7 +36,6 @@ public class OrderDto {
         order.setDistance(distance);
         order.setStartCoordinate(startCoordinate);
         order.setFinishCoordinate(finishCoordinate);
-        order.setCarCoordinate(carCoordinate);
         order.setCarId(carId);
         order.setExecutionStatusId(executionStatusId);
         order.setCreated(created);
@@ -56,7 +54,6 @@ public class OrderDto {
         orderDto.setDistance(order.getDistance());
         orderDto.setStartCoordinate(order.getStartCoordinate());
         orderDto.setFinishCoordinate(order.getFinishCoordinate());
-        orderDto.setCarCoordinate(order.getCarCoordinate());
         orderDto.setCarId(order.getCarId());
         orderDto.setExecutionStatusId(order.getExecutionStatusId());
         orderDto.setCreated(order.getCreated());
