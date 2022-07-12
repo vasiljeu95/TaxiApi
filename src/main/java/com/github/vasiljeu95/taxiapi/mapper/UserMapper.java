@@ -1,6 +1,6 @@
 package com.github.vasiljeu95.taxiapi.mapper;
 
-import com.github.vasiljeu95.taxiapi.dto.NewUserDto;
+import com.github.vasiljeu95.taxiapi.dto.user.NewUserDto;
 import com.github.vasiljeu95.taxiapi.entity.user.User;
 
 import java.util.List;

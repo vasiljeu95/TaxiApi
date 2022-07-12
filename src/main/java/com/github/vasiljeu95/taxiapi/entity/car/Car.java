@@ -15,20 +15,29 @@ import java.util.List;
 @Entity
 @Table(name = "cars")
 @Data
-public class Car extends BaseEntity {
+public class Car {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "car_status_id")
+    private Long carStatusId;
+
     @Column(name = "car_manufacturer")
     private String carManufacturer;
+
     @Column(name = "car_model")
     private String carModel;
+
     @Column(name = "car_color")
     private String carColor;
+
     @Column(name = "car_government_number")
     private String carGovernmentNumber;
-//    @Column(name = "car_type")
-//    @Enumerated(EnumType.STRING)
-//    private CarType carType;
 
-//    TODO - relationship with "users" table (where ROLE_DRIVER) and "cars" - in new table "driver_cars"
-//    @ManyToMany(mappedBy = "carList", fetch = FetchType.LAZY)
-//    private List<User> userCarList;
+    @Column(name = "car_coordinates")
+    private String carCoordinates;
 }

@@ -1,7 +1,7 @@
 package com.github.vasiljeu95.taxiapi.controller;
 
 import com.github.vasiljeu95.taxiapi.dto.AdminUserDto;
-import com.github.vasiljeu95.taxiapi.dto.UserDto;
+import com.github.vasiljeu95.taxiapi.dto.user.UserDto;
 import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.github.vasiljeu95.taxiapi.dto;
+package com.github.vasiljeu95.taxiapi.dto.order;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.vasiljeu95.taxiapi.entity.Status;

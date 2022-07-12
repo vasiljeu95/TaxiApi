@@ -210,9 +210,6 @@
             <column name="finish_coordinate" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="car_coordinates" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
             <column name="car_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
@@ -251,6 +248,9 @@
             <column name="car_government_number" type="varchar(255)">
                 <constraints nullable="false" unique="true" />
             </column>
+            <column name="car_coordinates" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable tableName="car_status">
             <column name="id" type="bigint" autoIncrement="true">
@@ -270,7 +270,6 @@
             <column name="distance" value="2800"/>
             <column name="start_coordinate" value="53.12632262332512, 18.020900863176767"/>
             <column name="finish_coordinate" value="53.11639604691738, 18.01057035270834"/>
-            <column name="car_coordinates" value="53.124333657962126, 18.04169921606076"/>
             <column name="car_id" value="1"/>
             <column name="execution_status_id" value="4"/>
         </insert>
@@ -280,7 +279,6 @@
             <column name="distance" value="4300"/>
             <column name="start_coordinate" value="53.11639604691738, 18.01057035270834"/>
             <column name="finish_coordinate" value="53.11763310961696, 17.964920410529793"/>
-            <column name="car_coordinates" value="53.18677101784518, 18.071504484261883"/>
             <column name="car_id" value="2"/>
             <column name="execution_status_id" value="2"/>
         </insert>
@@ -290,7 +288,6 @@
             <column name="distance" value="9000"/>
             <column name="start_coordinate" value="53.130756661034255, 17.993315365446445"/>
             <column name="finish_coordinate" value="53.18677101784518, 18.071504484261883"/>
-            <column name="car_coordinates" value="53.11763310961696, 17.964920410529793"/>
             <column name="car_id" value="3"/>
             <column name="execution_status_id" value="3"/>
         </insert>
@@ -300,7 +297,6 @@
             <column name="distance" value="179000"/>
             <column name="start_coordinate" value="53.124333657962126, 18.04169921606076"/>
             <column name="finish_coordinate" value="54.37901644755888, 18.589521109845254"/>
-            <column name="car_coordinates" value="53.11639604691738, 18.01057035270834"/>
             <column name="car_id" value="4"/>
             <column name="execution_status_id" value="1"/>
         </insert>
@@ -341,6 +337,7 @@
             <column name="car_model" value="Polo"/>
             <column name="car_color" value="White"/>
             <column name="car_government_number" value="AV22447"/>
+            <column name="car_coordinates" value="53.124333657962126, 18.04169921606076"/>
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="4"/>
@@ -349,6 +346,7 @@
             <column name="car_model" value="b34"/>
             <column name="car_color" value="Black"/>
             <column name="car_government_number" value="NR52387"/>
+            <column name="car_coordinates" value="53.18677101784518, 18.071504484261883"/>
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="5"/>
@@ -357,6 +355,7 @@
             <column name="car_model" value="Lada"/>
             <column name="car_color" value="Blue"/>
             <column name="car_government_number" value="MR63405"/>
+            <column name="car_coordinates" value="53.11763310961696, 17.964920410529793"/>
         </insert>
         <insert tableName="cars">
             <column name="user_id" value="6"/>
@@ -365,6 +364,7 @@
             <column name="car_model" value="Passat"/>
             <column name="car_color" value="Grey"/>
             <column name="car_government_number" value="YR84355"/>
+            <column name="car_coordinates" value="53.11639604691738, 18.01057035270834"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

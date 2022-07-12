@@ -1,7 +1,7 @@
 package com.github.vasiljeu95.taxiapi.service;
 
-import com.github.vasiljeu95.taxiapi.dto.TripCostDto;
-import com.github.vasiljeu95.taxiapi.dto.requestDto.TripCostRequestDto;
+import com.github.vasiljeu95.taxiapi.dto.user.TripCostDto;
+import com.github.vasiljeu95.taxiapi.dto.order.TripCostRequestDto;
 import org.springframework.stereotype.Service;
 
 /**

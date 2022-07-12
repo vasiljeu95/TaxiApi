@@ -1,8 +1,8 @@
 package com.github.vasiljeu95.taxiapi.controller;
 
 import com.github.vasiljeu95.taxiapi.configuration.jwt.JwtTokenProvider;
-import com.github.vasiljeu95.taxiapi.dto.requestDto.AuthenticationRequestDto;
-import com.github.vasiljeu95.taxiapi.dto.NewUserDto;
+import com.github.vasiljeu95.taxiapi.dto.AuthenticationRequestDto;
+import com.github.vasiljeu95.taxiapi.dto.user.NewUserDto;
 import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.mapper.UserMapperImpl;
 import com.github.vasiljeu95.taxiapi.service.UserServiceImp;
@@ -64,7 +64,7 @@ public class AuthenticationRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         userService.userRegistr(userMapper.toUser(userDto));
-        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("driverRegistration")
@@ -73,7 +73,7 @@ public class AuthenticationRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         userService.driverRegistr(userMapper.toUser(userDto));
-        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 //    @GetMapping("/logout")

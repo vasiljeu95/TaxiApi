@@ -1,11 +1,11 @@
 package com.github.vasiljeu95.taxiapi.controller;
 
-import com.github.vasiljeu95.taxiapi.dto.ExecuteOrderDto;
-import com.github.vasiljeu95.taxiapi.dto.OrderDto;
-import com.github.vasiljeu95.taxiapi.dto.TripCostDto;
-import com.github.vasiljeu95.taxiapi.dto.requestDto.ByIdRequestDto;
-import com.github.vasiljeu95.taxiapi.dto.requestDto.TripCostRequestDto;
-import com.github.vasiljeu95.taxiapi.dto.UserDto;
+import com.github.vasiljeu95.taxiapi.dto.order.ExecuteOrderDto;
+import com.github.vasiljeu95.taxiapi.dto.order.OrderDto;
+import com.github.vasiljeu95.taxiapi.dto.user.TripCostDto;
+import com.github.vasiljeu95.taxiapi.dto.user.ByIdRequestDto;
+import com.github.vasiljeu95.taxiapi.dto.order.TripCostRequestDto;
+import com.github.vasiljeu95.taxiapi.dto.user.UserDto;
 import com.github.vasiljeu95.taxiapi.entity.order.Order;
 import com.github.vasiljeu95.taxiapi.entity.user.User;
 import com.github.vasiljeu95.taxiapi.service.OrderServiceImpl;
@@ -14,9 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * UserRestController
@@ -57,7 +54,7 @@ public class UserRestController {
     public ResponseEntity createOrder (@RequestBody TripCostRequestDto tripCostRequestDto) {
         Order order = orderService.createOrder(tripCostRequestDto);
 //        return ResponseEntity.ok(OrderDto.fromOrder(order));
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(OrderDto.fromOrder(order), HttpStatus.CREATED);
     }
 
     @PostMapping("findOrderById")
