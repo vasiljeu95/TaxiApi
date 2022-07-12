@@ -2,7 +2,7 @@ package com.github.vasiljeu95.taxiapi.service;
 
 import com.github.vasiljeu95.taxiapi.dto.car.CreateCarDto;
 import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarCoordinateDto;
-import com.github.vasiljeu95.taxiapi.dto.car.UpdateCarStatusDto;
+import com.github.vasiljeu95.taxiapi.dto.car.UpdateStatusDto;
 import com.github.vasiljeu95.taxiapi.entity.car.Car;
 import com.github.vasiljeu95.taxiapi.repository.DriverRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -53,10 +53,18 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void updateCarStatus (UpdateCarStatusDto updateCarStatusDto) {
+    public void updateCarStatus (UpdateStatusDto updateCarStatusDto) {
         Long id = updateCarStatusDto.getId();
-        Long carStatusId = updateCarStatusDto.getCarStatusId();
+        Long carStatusId = updateCarStatusDto.getStatusId();
 
         driverRepository.updateCarStatus(id, carStatusId);
+    }
+
+    @Override
+    public void updateExecutionStatus (UpdateStatusDto updateCarStatusDto) {
+        Long id = updateCarStatusDto.getId();
+        Long carStatusId = updateCarStatusDto.getStatusId();
+
+        driverRepository.updateExecutionStatus(id, carStatusId);
     }
 }

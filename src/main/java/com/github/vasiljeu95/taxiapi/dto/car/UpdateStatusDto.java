@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 12.07.2022
  */
 @Data
-public class UpdateCarStatusDto {
+public class UpdateStatusDto {
     private Long id;
-    private Long carStatusId;
+    private Long statusId;
 }
